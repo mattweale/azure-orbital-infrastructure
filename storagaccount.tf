@@ -26,19 +26,30 @@ resource "azurerm_storage_account" "sa_orbital" {
 resource "azurerm_storage_container" "raw_container" {
   name                  = "raw-data"
   storage_account_name  = azurerm_storage_account.sa_orbital.name
+  depends_on = [
+    azurerm_storage_account.sa_orbital
+  ]
   }
 
 resource "azurerm_storage_container" "rt-stps_container" {
   name                  = "rt-stps"
   storage_account_name  = azurerm_storage_account.sa_orbital.name
+  depends_on = [
+    azurerm_storage_account.sa_orbital
+  ]
 }
 
 resource "azurerm_storage_container" "ipopp_container" {
   name                  = "ipopp"
-  storage_account_name  = azurerm_storage_account.sa_orbital.name
+  depends_on = [
+    azurerm_storage_account.sa_orbital
+  ]
 }
 
 resource "azurerm_storage_container" "shared_container" {
   name                  = "shared"
   storage_account_name  = azurerm_storage_account.sa_orbital.name
+  depends_on = [
+    azurerm_storage_account.sa_orbital
+  ]
 }
