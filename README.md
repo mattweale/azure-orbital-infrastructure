@@ -67,11 +67,11 @@ Steps:
   
 * Clone the  GitHub repository:
   
-  `git clone https://github.com/mattweale/azure-devtest-labs`
+  `git clone https://github.com/mattweale/azure-orbital-infrastructure`
   
 * Change directory:
   
-  `cd ./azure-devtest-labs`
+  `cd ./azure-orbital-aqua`
 
 * Update terraform.tfvars:
   
@@ -83,9 +83,9 @@ Steps:
 
 * Now start the deployment (when prompted, confirm with **yes** to start the deployment):
 
-  `terraform apply`
+  `terraform apply --auto-approve`
 
-Deployment takes approximately 30 minutes, the vasy majority of this being the installation of IPOPP. 
+Deployment takes approximately 45 minutes, the vasy majority of this being the installation of IPOPP. 
 
 ## Explore and verify
 
