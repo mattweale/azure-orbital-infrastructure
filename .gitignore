@@ -35,7 +35,7 @@ override.tf.json
 # example: *tfplan*
 
 # Include any other files or folders
-provider.tf
+provider.tf.mrw
 draw.io/**
 backend.cfg
 template.json
