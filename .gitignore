@@ -43,7 +43,7 @@ template.json
 **/files/*
 **/images/*
 *.py
-*.sh 
+auth.sh 
 Dockerfile
 *.bak
 .markdownlint.json
