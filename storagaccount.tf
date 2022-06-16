@@ -16,8 +16,7 @@ resource "azurerm_storage_account" "sa_orbital" {
 
     network_rules {
     default_action             = "Deny"
-    ip_rules                   = ["82.47.118.118"] 
-    bypass                     = ["AzureServices", "Logging", "Metrics"]
+    ip_rules                   = ["10.244.109.82"] 
     virtual_network_subnet_ids = [azurerm_subnet.endpoint_subnet.id]
   }
 
