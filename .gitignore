@@ -36,10 +36,8 @@ override.tf.json
 
 # Include any other files or folders
 provider.tf.mrw
-draw.io/**
 backend.cfg
 template.json
-Custom_Windows_Dev_Image.json
 *.pub
 **/docs/*
 **/files/*
