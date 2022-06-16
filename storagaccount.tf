@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "sa_orbital" {
 
     network_rules {
     default_action             = "Deny"
-    ip_rules                   = ["10.244.109.82"] 
+    ip_rules                   = ["13.93.31.208"] 
     virtual_network_subnet_ids = [azurerm_subnet.endpoint_subnet.id]
   }
 
