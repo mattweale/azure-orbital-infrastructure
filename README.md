@@ -73,10 +73,12 @@ Steps:
   
   `cd ./azure-orbital-aqua`
 
-* Update terraform.tfvars:
-  
-  `Update environment variables for ARM_TENANT_ID, ARM_SUBSCRIPTION_ID and ARM_CLIENT_ID`
-
+* The Provider Block tells Terraform to use the Default Subscription and Auth defined in the Azure CLI:
+<br>
+<br>
+![image](images/provider_block.png)
+<br>
+<br>
 * Initialize terraform and download the azurerm resource provider:
 
   `terraform init`
