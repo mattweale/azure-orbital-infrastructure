@@ -92,6 +92,15 @@ Deployment takes approximately 50 minutes, the vasy majority of this being the i
 <br>
 <br>
 
+
+Once deployed it should look like this: <br>
+<br>
+<br>
+![image](/images/azure_orbital_contact_profile.png)
+<br>
+<br>
+Note that this stores state locally so a [Terraform] backend block will need to be added if required.
+
 ## Explore and verify
 
 After the Terraform deployment concludes successfully, the following has been deployed into your subscription:
