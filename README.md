@@ -54,22 +54,20 @@ Pre-requisites:
   Azure Terraform Service Principal [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform) <br>
 
   `# Create Service Principal`<br>
-  <br>
   `az ad sp create-for-rbac --name mytfsp`
 
-  * Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:
+* Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:
 
-    GitHub Encrypted Secrets [documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
+  GitHub Encrypted Secrets [documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
 
   `# Add the following four secrets`<br>
-  <br>
   `ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000`<br>
   `ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000`<br>
   `ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000`<br>
   `ARM_TENANT_ID="00000000-0000-0000-0000-000000000000`<br>
 
 * Terraform uses a state file to manage the state of the resources deployed. In this deployment we will store the state file remotely in Azure; specficically in a Storage Account Container called: terraformstate. We first need to create those resources:<br>
-<br>
+
   `Create Resource Group`<br>
   `az group create -n <rg-name> -l uksouth`<br>
   <br>
@@ -79,7 +77,7 @@ Pre-requisites:
   `# Create Storage Account Container`<br>
   `az storage container create -n terraformstate`<br>
 
-* The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key in is the name of the Blob, in the Container, that is the state file.
+* The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key in is the name of the Blob, in the Container, that is the state file.<br>
 <br>
 <br>
 ![image](images/backend_block.png)
@@ -87,10 +85,10 @@ Pre-requisites:
 <br>
 Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
 
-* Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).
+* Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).<br>
 <br>
 <br>
-![image](azure_orbital_contact_profile.png)
+![image](images/azure_orbital_contact_profile.png)
 <br>
 <br>
 
