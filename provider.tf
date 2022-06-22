@@ -7,6 +7,12 @@ terraform {
       version = "=3.10.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "rg-permanent"
+    storage_account_name = "mrwterraformstate"
+    container_name       = "terraform-state"
+    key                  = "terraform-state-azure-orbital"
+  }
 }
 
 # Configure the Microsoft Azure Provider

@@ -17,7 +17,7 @@ This does not deploy the components for collecting the raw instrument data [the 
 * Created a Contact Profile [documentation](https://docs.microsoft.com/en-us/azure/orbital/contact-profile)
 * Scheduled a Contact [documentation](https://docs.microsoft.com/en-us/azure/orbital/schedule-contact)
 
-In this scenario we are collecting raw instrument data from a NASA Earth Observation Satellite, AQUA. Is it names Aqua, Latin for water, because of the large amount of information that the mission is collecting about the Earth's water cycle, including evaporation from the oceans, water vapor in the atmosphere, clouds, precipitation, soil moisture, sea ice, land ice, and snow cover on the land and ice. Additional variables also being measured by Aqua include radiative energy fluxes, aerosols, vegetation cover on the land, phytoplankton and dissolved organic matter in the oceans, and air, land, and water temperatures.
+In this scenario we are collecting raw instrument data from a NASA Earth Observation Satellite, AQUA. It is named Aqua, Latin for water, because of the large amount of information that the mission is collecting about the Earth's water cycle, including evaporation from the oceans, water vapor in the atmosphere, clouds, precipitation, soil moisture, sea ice, land ice, and snow cover on the land and ice. Additional variables also being measured by Aqua include radiative energy fluxes, aerosols, vegetation cover on the land, phytoplankton and dissolved organic matter in the oceans, and air, land, and water temperatures.
 
 A [single] Hub vNET is deployed with 3 Subnets. 2 Subnets are empty, ready for the deployment of a Bastion Host and VMs to support Common Services. 3 Virtual Machines have been deployed into the same subnet each having been configured using a Custom Script Extension to download and execute scripts for post-deployment configuration and software installation of the compenents needed:
 
@@ -49,45 +49,39 @@ Note that this stores state locally so a [Terraform] backend block will need to 
 
 Pre-requisites:
 
-* This assumes that you have configured Terraform to use a Service Principal for Deployment:
+* This assumes that you have configured Terraform to use a Service Principal for Deployment, with appropriate permissions in the target Subscription:
 
   `https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform`
 
-  `Export ARM_CLIENT_SECRET to the shell outside terraform.tfvars for improved security`
-  
-Steps:
-* Log in to Azure Cloud Shell at https://shell.azure.com/ and select Bash
-* Ensure Azure CLI and extensions are up to date:
-  
-  `az upgrade --yes`
-  
-* If necessary select your target subscription:
-  
-  `az account set --subscription <Name or ID of subscription>`
-  
-* Clone the  GitHub repository:
-  
-  `git clone https://github.com/mattweale/azure-orbital-infrastructure`
-  
-* Change directory:
-  
-  `cd ./azure-orbital-aqua`
+  `# Create Service Principal`<br>
+  `az ad sp create-for-rbac --name mytfsp`
 
-* The Provider Block tells Terraform to use the Default Subscription and Auth defined in the Azure CLI:
+  `Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:`
+
+  `https://docs.github.com/en/actions/security-guides/encrypted-secrets`
+
+  `# Add the following four secrets`<br>
+  `ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000`<br>
+  `ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000`<br>
+  `ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000`<br>
+  `ARM_TENANT_ID="00000000-0000-0000-0000-000000000000`<br>
+
+* Terraform uses a state file to manage the state of the resources deployed. In this deployment we will store the state file remotely in Azure; specficically in a Storage Account Container called: terraformstate. We first need to create those resources:<br>
+  `Create Resource Group`<br>
+  `az group create -n <rg-name> -l uksouth`<br>
+  <br>
+  `Create Storage Account`<br>
+  `az storage account create -n <sa-name?> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
+  <br>
+  `# Create Storage Account Container`<br>
+  `az storage container create -n terraformstate`<br>
+
+* The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key in is the name of the Blob, in the Container, that is the state file.
 <br>
 <br>
-![image](images/provider_block.png)
+![image](images/backend_block.png)
 <br>
-<br>
-* Initialize terraform and download the azurerm resource provider:
-
-  `terraform init`
-
-* Now start the deployment (when prompted, confirm with **yes** to start the deployment):
-
-  `terraform apply --auto-approve`
-
-Deployment takes approximately 45 minutes, the vasy majority of this being the installation of IPOPP. 
+Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP. 
 
 ## Explore and verify
 
