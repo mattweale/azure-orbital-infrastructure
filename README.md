@@ -40,7 +40,7 @@ NORAD TRE Empemeris [documentation](https://aqua.nasa.gov/) <br>
 Once deployed it should look like this: <br>
 <br>
 <br>
-![image](images/azure-aqua-processing.png)
+![image](images/azure_aqua_processing.png)
 <br>
 <br>
 Note that this stores state locally so a [Terraform] backend block will need to be added if required.
@@ -54,13 +54,15 @@ Pre-requisites:
   Azure Terraform Service Principal [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform) <br>
 
   `# Create Service Principal`<br>
+  <br>
   `az ad sp create-for-rbac --name mytfsp`
 
-  `Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:`
+  * Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:
 
     GitHub Encrypted Secrets [documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
 
   `# Add the following four secrets`<br>
+  <br>
   `ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000`<br>
   `ARM_CLIENT_SECRET="00000000-0000-0000-0000-000000000000`<br>
   `ARM_SUBSCRIPTION_ID="00000000-0000-0000-0000-000000000000`<br>
@@ -82,12 +84,14 @@ Pre-requisites:
 <br>
 ![image](images/backend_block.png)
 <br>
+<br>
 Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
 
 * Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).
 <br>
 <br>
-![image](images/azure-orbital-contact-profile.png)
+![image](azure_orbital_contact_profile.png)
+<br>
 <br>
 
 ## Explore and verify
