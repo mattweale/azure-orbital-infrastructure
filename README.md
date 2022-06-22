@@ -51,14 +51,14 @@ Pre-requisites:
 
 * This assumes that you have configured Terraform to use a Service Principal for Deployment, with appropriate permissions in the target Subscription:
 
-  Azure Terraform Service Principal [documentation]](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform) <br>
+  Azure Terraform Service Principal [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform) <br>
 
   `# Create Service Principal`<br>
   `az ad sp create-for-rbac --name mytfsp`
 
   `Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:`
 
-    GitHub Encrypted Secrets [documentation]](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
+    GitHub Encrypted Secrets [documentation](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
 
   `# Add the following four secrets`<br>
   `ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000`<br>
@@ -67,6 +67,7 @@ Pre-requisites:
   `ARM_TENANT_ID="00000000-0000-0000-0000-000000000000`<br>
 
 * Terraform uses a state file to manage the state of the resources deployed. In this deployment we will store the state file remotely in Azure; specficically in a Storage Account Container called: terraformstate. We first need to create those resources:<br>
+<br>
   `Create Resource Group`<br>
   `az group create -n <rg-name> -l uksouth`<br>
   <br>
