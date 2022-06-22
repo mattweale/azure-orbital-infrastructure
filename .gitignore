@@ -41,7 +41,6 @@ template.json
 *.pub
 **/docs/*
 **/files/*
-**/images/*
 *.py
 auth.sh 
 Dockerfile
