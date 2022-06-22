@@ -51,14 +51,14 @@ Pre-requisites:
 
 * This assumes that you have configured Terraform to use a Service Principal for Deployment, with appropriate permissions in the target Subscription:
 
-  `https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform`
+  Azure Terraform Service Principal [documentation]](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#configuring-the-service-principal-in-terraform) <br>
 
   `# Create Service Principal`<br>
   `az ad sp create-for-rbac --name mytfsp`
 
   `Use GitHub Encrypted Secrets to store sensitive information, in this case the Service Principal ID and SECRET:`
 
-  `https://docs.github.com/en/actions/security-guides/encrypted-secrets`
+    GitHub Encrypted Secrets [documentation]](https://docs.github.com/en/actions/security-guides/encrypted-secrets) <br>
 
   `# Add the following four secrets`<br>
   `ARM_CLIENT_ID="00000000-0000-0000-0000-000000000000`<br>
@@ -81,7 +81,13 @@ Pre-requisites:
 <br>
 ![image](images/backend_block.png)
 <br>
-Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP. 
+Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
+
+* Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).
+<br>
+<br>
+![image](images/azure-orbital-contact-profile.png)
+<br>
 
 ## Explore and verify
 
