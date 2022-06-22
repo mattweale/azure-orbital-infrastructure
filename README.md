@@ -80,7 +80,7 @@ Pre-requisites:
 * The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key in is the name of the Blob, in the Container, that is the state file.<br>
 <br>
 <br>
-![image](images/backend_block.png)
+![image](/images/backend_block.png)
 <br>
 <br>
 Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
@@ -88,19 +88,9 @@ Deployment takes approximately 50 minutes, the vasy majority of this being the i
 * Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).<br>
 <br>
 <br>
-![image](images/azure_orbital_contact_profile.png)
-<br>
-<br>
-
-
-Once deployed it should look like this: <br>
-<br>
-<br>
 ![image](/images/azure_orbital_contact_profile.png)
 <br>
 <br>
-Note that this stores state locally so a [Terraform] backend block will need to be added if required.
-
 ## Explore and verify
 
 After the Terraform deployment concludes successfully, the following has been deployed into your subscription:
