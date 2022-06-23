@@ -45,15 +45,6 @@ Once deployed it should look like this: <br>
 <br>
 Note that this stores state locally so a [Terraform] backend block will need to be added if required.
 
-
-Once deployed it should look like this: <br>
-<br>
-<br>
-![image](images/azure_orbital_contact_profile.png)
-<br>
-<br>
-Note that this stores state locally so a [Terraform] backend block will need to be added if required.
-
 # Deployment
 
 Pre-requisites:
@@ -95,10 +86,9 @@ The Backend Block tells Terraform where to store the state. This is where the .t
 Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
 
 Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).<br>
-
 <br>
 <br>
-![image](images/azure_aqua_processing.png)
+![image](images/azure_orbital_contact_profile.png)
 <br>
 <br>
 Once the Contact Profile has been updated, make sure that the Satellite Ephemeris is current and then schedule a Contact.
