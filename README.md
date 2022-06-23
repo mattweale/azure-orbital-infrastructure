@@ -113,5 +113,5 @@ After the Terraform deployment concludes successfully, the following has been de
 A number of things need to be improved.......
 
 * Use fstab for making mounts permanent
-* Query the GitHub actions runner's public IP addresses to dynamically build whitelist for the Storage Firewall
+* Query the GitHub actions runner's public IP addresses to dynamically build the whitelist for the Storage Firewall
 * More elegant shell scripts all round :see_no_evil:
