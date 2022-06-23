@@ -72,18 +72,18 @@ Pre-requisites:
   `az group create -n <rg-name> -l uksouth`<br>
   <br>
   `Create Storage Account`<br>
-  `az storage account create -n <sa-name?> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
+  `az storage account create -n <sa-name> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
   <br>
   `# Create Storage Account Container`<br>
   `az storage container create -n terraformstate`<br>
 
-The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key in is the name of the Blob, in the Container, that is the state file.<br>
+The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key is the name of the Blob, in the Container, that is the state file.<br>
 <br>
 <br>
 ![image](images/backend_block.png)
 <br>
 <br>
-Deployment takes approximately 50 minutes, the vasy majority of this being the installation of IPOPP.
+Deployment takes approximately 45 minutes, the vasy majority of this being the installation of IPOPP.
 
 Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration is here(#json/demodulationConfiguration.json).<br>
 <br>
@@ -109,3 +109,4 @@ After the Terraform deployment concludes successfully, the following has been de
 A number of things need to be improved.......
 
 * Use fstab for making mounts permanent
+* More elegant shell scripts all round :see_no_evil:
