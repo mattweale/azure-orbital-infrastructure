@@ -6,6 +6,10 @@
 
 [Deployment](#deployment)
 
+[Explore and Verify](#ExploreandVerify)
+
+[Backlog](#backlog)
+
 # Overview
 
 This Terraform module deploys the infrastructure components required for [Level 0 & Level 1] processing of raw instrument data from AQUA, a NASA Earth Observation Satellite. This leverages Azure Orbital, a fully managed cloud-based ground station as a service, for ingesting space data directly into Azure.
@@ -93,7 +97,7 @@ Once deployed you need to update the Orbital Contact Profile with the IP Address
 <br>
 Once the Contact Profile has been updated, make sure that the Satellite Ephemeris is current and then schedule a Contact.
 
-## Explore and verify
+# Explore and Verify
 
 After the Terraform deployment concludes successfully, the following has been deployed into your subscription:
 
@@ -104,9 +108,10 @@ After the Terraform deployment concludes successfully, the following has been de
 * A Storage Account **saorbital** with Containers raw-data, rt-stps, ipopp and shared;
 * Container [saorbital/shared] NFS Mounted to each VM at /nfsdata;
 * An NSG attached to the endpoint-subnet with Inbound Traffic Allowed for 22, 3389 and 50001;
-## Backlog
+# Backlog
 
 A number of things need to be improved.......
 
 * Use fstab for making mounts permanent
+* Query the GitHub actions runner's public IP addresses to dynamically build whitelist for the Storage Firewall
 * More elegant shell scripts all round :see_no_evil:
