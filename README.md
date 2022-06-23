@@ -45,6 +45,15 @@ Once deployed it should look like this: <br>
 <br>
 Note that this stores state locally so a [Terraform] backend block will need to be added if required.
 
+
+Once deployed it should look like this: <br>
+<br>
+<br>
+![image](images/azure_orbital_contact_profile.png)
+<br>
+<br>
+Note that this stores state locally so a [Terraform] backend block will need to be added if required.
+
 # Deployment
 
 Pre-requisites:

@@ -3,12 +3,12 @@
 #######################################################################
 resource "azurerm_eventhub_namespace" "eh-orbital-ns" {
   name                = "orbital-eh-namespace"
-  location            = var.location 
-  resource_group_name = azurerm_resource_group.rg.name 
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
   capacity            = 1
 
-  tags                = var.tags
+  tags = var.tags
 }
 
 resource "azurerm_eventhub" "eh-orbital" {

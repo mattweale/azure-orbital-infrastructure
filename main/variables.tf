@@ -14,10 +14,10 @@ variable "prefix" {
 variable "tags" {
   type        = map(any)
   description = "Tags to be attached to azure resources"
-    default = {
+  default = {
     "deployed" = "terraform"
-    "env" = "dev"
-    }
+    "env"      = "dev"
+  }
 }
 variable "username" {
   description = "Username for Virtual Machines"

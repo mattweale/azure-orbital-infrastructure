@@ -3,11 +3,11 @@
 #######################################################################
 
 resource "azurerm_network_security_group" "nsg_orbital_subnet" {
-    name                = "nsg-orbital-processing"
-    resource_group_name = azurerm_resource_group.rg.name
-    location            = var.location
+  name                = "nsg-orbital-processing"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = var.location
 
-    security_rule {
+  security_rule {
     name                       = "Port_22"
     priority                   = 201
     direction                  = "Inbound"
@@ -18,7 +18,7 @@ resource "azurerm_network_security_group" "nsg_orbital_subnet" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-    security_rule {
+  security_rule {
     name                       = "Port_3389"
     priority                   = 202
     direction                  = "Inbound"
@@ -29,7 +29,7 @@ resource "azurerm_network_security_group" "nsg_orbital_subnet" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-    security_rule {
+  security_rule {
     name                       = "Port_50001"
     priority                   = 200
     direction                  = "Inbound"
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "nsg_orbital_subnet" {
     destination_address_prefix = "*"
   }
 
-    tags = var.tags 
+  tags = var.tags
 
 }
 

@@ -37,7 +37,7 @@ resource "azurerm_subnet" "endpoint_subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.hub_vnet.name
   address_prefixes     = ["172.16.3.0/24"]
-  service_endpoints = ["Microsoft.Storage"]
+  service_endpoints    = ["Microsoft.Storage"]
 }
 
 #######################################################################
