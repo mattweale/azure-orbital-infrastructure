@@ -75,7 +75,7 @@ Pre-requisites:
   `# Create Resource Group`<br>
   `az group create -n <rg-name> -l uksouth`<br>
   <br>
-  `# Create Storage Account`<br>
+  `# Create Storage Account [Storage Account name needs to be globally unique]`<br>
   `az storage account create -n <sa-name> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
   <br>
   `# Create Storage Account Container`<br>
