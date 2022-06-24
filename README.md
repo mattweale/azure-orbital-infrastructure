@@ -72,10 +72,10 @@ Pre-requisites:
 
 * Terraform uses a state file to manage the state of the resources deployed. In this deployment we will store the state file remotely in Azure; specficically in a Storage Account Container called: terraformstate. We first need to create those resources:<br>
 
-  `Create Resource Group`<br>
+  `# Create Resource Group`<br>
   `az group create -n <rg-name> -l uksouth`<br>
   <br>
-  `Create Storage Account`<br>
+  `# Create Storage Account`<br>
   `az storage account create -n <sa-name> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
   <br>
   `# Create Storage Account Container`<br>
