@@ -31,11 +31,11 @@ else
 	echo "$NOW	RT-STPS Prerequisites"
 	
 #	Install JDK
-	sudo yum install -y java-11-openjdk-devel
+#	sudo yum install -y java-11-openjdk-devel
 	
 #   Set JAVA Environment Variables
-	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-	export PATH=$PATH:$JAVA_HOME/bin
+#	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+#	export PATH=$PATH:$JAVA_HOME/bin
 
 #   Download RT_STPS Software and Test Data
 	export CONTAINER='https://samrw.blob.core.windows.net/rt-stps/'
@@ -43,29 +43,33 @@ else
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
-	azcopy cp "${CONTAINER}RT-STPS_6.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_2.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_3.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}RT-STPS_6.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}test2.bin${SAS_TOKEN}" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+
+#	azcopy cp "${CONTAINER}RT-STPS_6.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+#	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+#	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_2.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+#	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_3.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+#	azcopy cp "${CONTAINER}RT-STPS_6.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+#	azcopy cp "${CONTAINER}test2.bin${SAS_TOKEN}" "$SOURCE_DIR"
 
 #	Could use this but need to tidy up Container
 #	azcopy $RTSTPS_SOURCE $RTSTPS_DIR --recursive --overwrite --log-level=error
 
 # 	Install RT-STPS
 	cd $SOURCE_DIR
-	tar -xzvf RT-STPS_6.0.tar.gz
+	tar -xzvf RT-STPS_7.0.tar.gz
+#	tar -xzvf RT-STPS_6.0.tar.gz
 	cd rt-stps
 	./install.sh
 
 # 	Install patches
-	cd $SOURCE_DIR
-	tar -xzvf RT-STPS_6.0_PATCH_1.tar.gz 
-	tar -xzvf RT-STPS_6.0_PATCH_2.tar.gz 
-	tar -xzvf RT-STPS_6.0_PATCH_3.tar.gz
-	sudo chown -R adminuser /datadrive
-	sudo chgrp -R adminuser /datadrive
+#	cd $SOURCE_DIR
+#	tar -xzvf RT-STPS_6.0_PATCH_1.tar.gz 
+#	tar -xzvf RT-STPS_6.0_PATCH_2.tar.gz 
+#	tar -xzvf RT-STPS_6.0_PATCH_3.tar.gz
+#	sudo chown -R adminuser /datadrive
+#	sudo chgrp -R adminuser /datadrive
 
 # 	Update leadsec file
 	cd /datadrive/rt-stps
