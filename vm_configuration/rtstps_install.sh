@@ -45,6 +45,7 @@ else
 
 	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}test2.bin${SAS_TOKEN}" "$SOURCE_DIR"
 
 #	azcopy cp "${CONTAINER}RT-STPS_6.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
 #	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
@@ -59,7 +60,7 @@ else
 # 	Install RT-STPS
 	cd $SOURCE_DIR
 	tar -xzvf RT-STPS_7.0.tar.gz
-#	tar -xzvf RT-STPS_6.0.tar.gz
+	#	tar -xzvf RT-STPS_6.0.tar.gz
 	cd rt-stps
 	./install.sh
 
