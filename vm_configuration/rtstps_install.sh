@@ -43,9 +43,11 @@ else
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
-	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}test2.bin${SAS_TOKEN}" "$SOURCE_DIR"
+	azcopy login --identity --identity-client-id "f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
+
+	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}test2.bin$" "$SOURCE_DIR"
 
 #	azcopy cp "${CONTAINER}RT-STPS_6.0.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
 #	azcopy cp "${CONTAINER}RT-STPS_6.0_PATCH_1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"

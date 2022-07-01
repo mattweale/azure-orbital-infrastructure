@@ -79,7 +79,7 @@ Pre-requisites:
   `az storage account create -n <sa-name> -g <rg-name> -l uksouth --sku Standard_LRS`<br>
   <br>
   `# Create Storage Account Container`<br>
-  `az storage container create -n terraformstate`<br>
+  `az storage container create -n terraformstate --account-name <sa-name>`<br>
 
 The Backend Block tells Terraform where to store the state. This is where the .tfstate file will be stored. Update this block with the detals of the Resource Group, Storage Account and Container Name you have created. The Key is the name of the Blob, in the Container, that is the state file.<br>
 <br>
