@@ -49,7 +49,6 @@ resource "azurerm_linux_virtual_machine" "vm_orbital_rtstps" {
     sku       = "7_9-gen2"
     version   = "latest"
   }
-
   identity {
     type         = "UserAssigned"
     identity_ids = [data.azurerm_user_assigned_identity.uamiorbital.id]
