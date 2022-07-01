@@ -39,9 +39,11 @@ else
 	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
 	export PATCH_FILE_NAME='DRL-IPOPP_4.1_PATCH_1.tar.gz'
 
-	azcopy cp "${CONTAINER}DRL-IPOPP_4.1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}DRL-IPOPP_4.1_PATCH_1.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
-	azcopy cp "${CONTAINER}DRL-IPOPP_4.1_PATCH_2.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
+	azcopy login --identity --identity-client-id "f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
+
+	azcopy cp "${CONTAINER}DRL-IPOPP_4.1.tar.gz" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}DRL-IPOPP_4.1_PATCH_1.tar.gz" "$SOURCE_DIR"
+	azcopy cp "${CONTAINER}DRL-IPOPP_4.1_PATCH_2.tar.gz" "$SOURCE_DIR"
 
  	cp -a /var/lib/waagent/custom-script/download/0/install_ipopp_prepare.sh /datadrive/install_ipopp_prepare.sh
 	sudo chown -R adminuser /datadrive

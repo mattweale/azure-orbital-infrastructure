@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "nic_orbital_data_rtstps" {
   }
 }
 #######################################################################
-## Create Linux VM ffor RTSTPS VM
+## Create Linux VM for RTSTPS VM
 #######################################################################
 resource "azurerm_linux_virtual_machine" "vm_orbital_rtstps" {
   name                            = "vm-orbital-rtstps"
@@ -49,6 +49,11 @@ resource "azurerm_linux_virtual_machine" "vm_orbital_rtstps" {
     sku       = "7_9-gen2"
     version   = "latest"
   }
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [data.azurerm_user_assigned_identity.uamiorbital.id]
+  } 
 }
 
 #######################################################################
@@ -70,9 +75,9 @@ resource "azurerm_virtual_machine_data_disk_attachment" "data_disk_orbital_rtstp
   caching            = "ReadWrite"
 }
 
-##########################################################
+#######################################################################
 ## Custom Script Extension to Configure VM
-##########################################################
+#######################################################################
 resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
   name                       = "cse_orbital-rtstps-config"
   virtual_machine_id         = azurerm_linux_virtual_machine.vm_orbital_rtstps.id
