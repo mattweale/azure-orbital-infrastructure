@@ -33,7 +33,7 @@ else
 
 #   Download IPOPP Software and Patch. Hard coded Containers and SAS Token
 	export CONTAINER='https://samrw.blob.core.windows.net/ipopp/'
-	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:57Z&se=2023-06-07T02:11:57Z&spr=https&sv=2021-06-08&sr=c&sig=xPb9nAWP8Om2ony57uySwlfsmWxNCO7boKEtWYC8qqs%3D'
+#	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:57Z&se=2023-06-07T02:11:57Z&spr=https&sv=2021-06-08&sr=c&sig=xPb9nAWP8Om2ony57uySwlfsmWxNCO7boKEtWYC8qqs%3D'
 	export SOURCE_DIR=/datadrive
 	export INSTALL_DIR=/datadrive/IPOPP
 	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
