@@ -18,7 +18,7 @@
 	$INSTALL_DIR/install_ipopp.sh -installdir $INSTALL_DIR/drl -datadir $INSTALL_DIR/data  -ingestdir $INSTALL_DIR/data/ingest
 
 # 	Add SQL Path for Patch Installation DB Check
-    export PATH=$PATH:$INSTALL_DIR/drl/standalone/mariadb-10.1.8-linux-x86_64/bin:$INSTALL_DIR/drl/standalone/jdk1.8.0_45/bin
+    export PATH=$PATH:$INSTALL_DIR/drl/standalone/mariadb-10.1.8-linux-x86_64/bin:$INSTALL_DIRc/drl/standalone/jdk1.8.0_45/bin
 
 # 	Install IPOPP Patch #1
 	cp $SOURCE_DIR/DRL-IPOPP_4.1_PATCH_1.tar.gz $INSTALL_DIR/drl

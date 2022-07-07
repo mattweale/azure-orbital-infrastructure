@@ -6,11 +6,3 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
   tags     = var.tags
 }
-
-#######################################################################
-## Import Existing MI for later use
-#######################################################################
-data "azurerm_user_assigned_identity" "uamiorbital" {
-  resource_group_name = "rg-permanent"
-  name                = "uamiorbital"
-}

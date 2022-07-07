@@ -33,3 +33,7 @@ variable "vmsize" {
   description = "Size of the VMs"
   default     = "Standard_D4s_v5"
 }
+
+variable "storageaccount" {
+  description = "Variable pulled from GitHub Secret that sets name of Storage Account where AQUA apps are"
+}
