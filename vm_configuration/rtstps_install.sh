@@ -47,7 +47,7 @@ else
 	azcopy login --identity --identity-client-id $AQUA_MI_ID
 	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
 
-	# azcopy login --identity --identity-client-id e093438d-8a54-4c52-8615-f4f489928299
+	# azcopy login --identity --identity-client-id 82a8c87a-0d2d-4834-927f-6c21283083ea
 	# azcopy cp "./logfile.txt" "https://samrw.blob.core.windows.net/rt-stps/"
 
 
