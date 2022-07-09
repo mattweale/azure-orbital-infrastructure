@@ -44,8 +44,15 @@ else
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
-	azcopy login --identity --identity-client-id "f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
+	azcopy login --identity --identity-client-id $AQUA_MI_ID
+	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
 
+	# azcopy login --identity --identity-client-id e093438d-8a54-4c52-8615-f4f489928299
+	# azcopy cp "./logfile.txt" "https://samrw.blob.core.windows.net/rt-stps/"
+
+
+
+	echo "Connecting to ${CONTAINER} with Managed Identity ${AQUA_MI_ID}"
 	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}test2.bin$" "$SOURCE_DIR"
