@@ -38,21 +38,18 @@ else
 #	export PATH=$PATH:$JAVA_HOME/bin
 
 #   Download RT_STPS Software and Test Data
-#	export CONTAINER='https://samrw.blob.core.windows.net/rt-stps/'
-	export CONTAINER='https://'${AQUA_SA}'.blob.core.windows.net/rt-stps/'
+	export CONTAINER='https://samrw.blob.core.windows.net/rt-stps/'
 #	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:00Z&se=2023-06-07T02:11:00Z&spr=https&sv=2021-06-08&sr=c&sig=9jcQ%2B7STJjGnoA8NGD1CVtBEDhLDCwm3XVFuE1mLsGk%3D'
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
-	azcopy login --identity --identity-client-id $AQUA_MI_ID
+	azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
 	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
 
-	# azcopy login --identity --identity-client-id 82a8c87a-0d2d-4834-927f-6c21283083ea
+	# azcopy login --identity --identity-client-id a7c4a06f-d401-4736-b2c2-45458b5a17f1
 	# azcopy cp "./logfile.txt" "https://samrw.blob.core.windows.net/rt-stps/"
 
 
-
-	echo "Connecting to ${CONTAINER} with Managed Identity ${AQUA_MI_ID}"
 	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}test2.bin$" "$SOURCE_DIR"

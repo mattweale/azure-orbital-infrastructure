@@ -86,12 +86,12 @@ resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
   type_handler_version       = "2.1"
   auto_upgrade_minor_version = true
   depends_on                 = [azurerm_virtual_machine_data_disk_attachment.data_disk_orbital_rtstps_attach]
-  timeouts {
-    create = "60m"
-  }
+  #timeouts {
+  #  create = "60m"
+  #}
   settings                   = <<SETTINGS
     {
-        "commandToExecute":"export AQUA_MI_ID=${azurerm_user_assigned_identity.uamiorbital.client_id} && export AQUA_SA=samrw && sudo ./main_rtstps.sh > ./logfile.txt exit 0",
+        "commandToExecute":"export AQUA_MI_ID=${azurerm_user_assigned_identity.uamiorbital.client_id} && sudo ./main_rtstps.sh > ./logfile.txt exit 0",
         "fileUris":["https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_data_drive.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_container.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/main_rtstps.sh",
