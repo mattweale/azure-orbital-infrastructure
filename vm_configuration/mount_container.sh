@@ -23,13 +23,13 @@
 
     if [ "$HOSTNAME" = "vm-orbital-data-collection" ]; then
 	    echo "Found Data Collection VM mounting /saorbital99/raw-data"
-        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital.blob.core.windows.net:/saorbital/shared  /nfsdata
+        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital99.blob.core.windows.net:/saorbital/shared  /nfsdata
     elif [ "$HOSTNAME" = "vm-orbital-rtstps" ]; then
 	    echo "Found RT-STPS VM mounting /saorbital99/rt-stps"
-        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital.blob.core.windows.net:/saorbital/shared  /nfsdata
+        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital99.blob.core.windows.net:/saorbital/shared  /nfsdata
     elif [ "$HOSTNAME" = "vm-orbital-ipopp" ]; then
 	    echo "Found IPOPP VM mounting /saorbital99/ipopp"
-        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital.blob.core.windows.net:/saorbital/shared  /nfsdata
+        sudo mount -o sec=sys,vers=3,nolock,proto=tcp saorbital99.blob.core.windows.net:/saorbital/shared  /nfsdata
         cd /nfsd
     else
         echo "What VM is this!?"
