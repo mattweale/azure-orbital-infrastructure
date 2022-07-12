@@ -3,7 +3,8 @@
 #	=============================
 #	RT-STPS Install
 #	=============================
-
+echo "Now on the RT-STPS Install"
+echo "First let's install azcopy"
 #   Install az copy
 cd ~
 curl "https://azcopyvnext.azureedge.net/release20220315/azcopy_linux_amd64_10.14.1.tar.gz" > azcopy_linux_amd64_10.14.1.tar.gz
@@ -11,8 +12,10 @@ tar -xvf azcopy_linux_amd64_10.14.1.tar.gz
 cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
 
 #	Apply Udates
+echo "Now let's upgrade packages"
 	sudo yum upgrade -y 
-	
+
+echo "Now let's install XRDP"
 # 	Install XRDP Server
 	sudo yum install -y epel-release
 	sudo yum groupinstall -y "Server with GUI"
@@ -37,6 +40,7 @@ else
 #	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 #	export PATH=$PATH:$JAVA_HOME/bin
 
+echo "Now let's download RT-STPS v7.0 and Test Data"
 #   Download RT_STPS Software and Test Data
 	export CONTAINER='https://samrw.blob.core.windows.net/rt-stps/'
 #	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:00Z&se=2023-06-07T02:11:00Z&spr=https&sv=2021-06-08&sr=c&sig=9jcQ%2B7STJjGnoA8NGD1CVtBEDhLDCwm3XVFuE1mLsGk%3D'
@@ -64,6 +68,7 @@ else
 #	Could use this but need to tidy up Container
 #	azcopy $RTSTPS_SOURCE $RTSTPS_DIR --recursive --overwrite --log-level=error
 
+echo "Now let's install RT-STPS v7.0"
 # 	Install RT-STPS
 	cd $SOURCE_DIR
 	tar -xzvf RT-STPS_7.0.tar.gz
