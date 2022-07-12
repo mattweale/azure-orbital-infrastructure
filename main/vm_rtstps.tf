@@ -51,8 +51,8 @@ resource "azurerm_linux_virtual_machine" "vm_orbital_rtstps" {
   }
   identity {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.uamiorbital.id]
-    #identity_ids = [data.azurerm_user_assigned_identity.uamiorbital.id]
+    #identity_ids = [azurerm_user_assigned_identity.uamiorbital.id]
+    identity_ids = [data.azurerm_user_assigned_identity.uamiorbital.id]
   }
 }
 
@@ -91,7 +91,7 @@ resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
   #}
   settings                   = <<SETTINGS
     {
-        "commandToExecute":"export AQUA_MI_ID=${azurerm_user_assigned_identity.uamiorbital.client_id} && sudo ./main_rtstps.sh > ./logfile.txt exit 0",
+        "commandToExecute":"export AQUA_MI_ID=${data.azurerm_user_assigned_identity.uamiorbital.client_id} && echo $AQUA_MI_ID > ./varlog.txt && ./main_rtstps.sh > ./logfile.txt exit 0",
         "fileUris":["https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_data_drive.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_container.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/main_rtstps.sh",

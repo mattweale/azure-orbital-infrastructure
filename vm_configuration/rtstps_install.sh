@@ -46,7 +46,7 @@ else
 	azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
 	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
 
-	# azcopy login --identity --identity-client-id a7c4a06f-d401-4736-b2c2-45458b5a17f1
+	# azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
 	# azcopy cp "./logfile.txt" "https://samrw.blob.core.windows.net/rt-stps/"
 
 

@@ -11,7 +11,7 @@ data "azurerm_user_assigned_identity" "uamiorbital" {
 #######################################################################
 data "azurerm_storage_account" "sa_mrw" {
   resource_group_name = "rg-permanent"
-  name                = var.storageaccount
+  name                = "samrw"
 }
 
 #######################################################################
@@ -29,7 +29,7 @@ data "azurerm_storage_account" "sa_mrw" {
 resource "azurerm_role_assignment" "ra_mi_sa" {
   scope                = data.azurerm_storage_account.sa_mrw.id
   role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = data.azurerm_user_assigned_identity.uamiorbital.client_id
+  principal_id         = data.azurerm_user_assigned_identity.uamiorbital.principal_id
 }
 
 #output "user_assigned_identity" {
