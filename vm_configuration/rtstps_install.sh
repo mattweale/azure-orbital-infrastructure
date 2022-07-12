@@ -3,6 +3,9 @@
 #	=============================
 #	RT-STPS Install
 #	=============================
+
+echo "The client.td of the MI is ${AQUA_MI_ID}"
+
 echo "Now on the RT-STPS Install"
 echo "First let's install azcopy"
 #   Install az copy
