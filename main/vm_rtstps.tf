@@ -91,7 +91,7 @@ resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
   #}
   settings                   = <<SETTINGS
     {
-        "commandToExecute":"export AQUA_MI_ID=${data.azurerm_user_assigned_identity.uamiorbital.client_id} && ./main_rtstps.sh > ./logfile.txt exit 0",
+        "commandToExecute":"export AQUA_MI_ID=${data.azurerm_user_assigned_identity.uamiorbital.client_id} && export AQUA_TOOLS_SA=samrw && ./main_rtstps.sh > ./logfile.txt exit 0",
         "fileUris":["https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_data_drive.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_container.sh",
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/main_rtstps.sh",

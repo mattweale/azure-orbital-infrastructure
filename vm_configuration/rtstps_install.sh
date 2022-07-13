@@ -5,6 +5,7 @@
 #	=============================
 
 echo "From rtstps_install.sh the client.id of the MI is ${AQUA_MI_ID}"
+echo "From rtstps_install.sh the name of the NASA Tools Storage Account is ${AQUA_TOOLS_SA}"
 
 echo "Now on the RT-STPS Install"
 echo "First let's install azcopy"
@@ -50,7 +51,7 @@ echo "Now let's download RT-STPS v7.0 and Test Data"
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
-	azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
+	azcopy login --identity --identity-client-id ${AQUA_MI_ID}
 	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
 
 	# azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
