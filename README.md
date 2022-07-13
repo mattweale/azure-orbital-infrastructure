@@ -6,7 +6,9 @@
 
 [Deployment](#deployment)
 
-[Explore and Verify](#ExploreandVerify)
+[Explore and Verify](#Explore-and-Verify)
+
+[Example Output](#Example-Output)
 
 [Backlog](#backlog)
 
@@ -26,8 +28,8 @@ In this scenario we are collecting raw instrument data from a NASA Earth Observa
 A [single] Hub vNET is deployed with 3 Subnets. 2 Subnets are empty, ready for the deployment of a Bastion Host and VMs to support Common Services. 3 Virtual Machines have been deployed into the same subnet each having been configured using a Custom Script Extension to download and execute scripts for post-deployment configuration and software installation of the components needed:
 
 * vm-orbital-data-collection - Data Collection VM: VM configured to receive traffic [e.g. netcat] from Orbital.
-* vm-orbital-rt-stps - RT-STPS VM: The Real-time Software Telemetry Processing System (RT-STPS) ingests unsynchronized downlink data telemetry to various formats for further processing.
-* vm-orbital-ipopp - International Planetary Observation Processing Package processes science data and derivative products [from AQUA and other missions] using Science Processing Algorithms [SPA]
+* vm-orbital-rt-stps - RT-STPS VM: The Real-time Software Telemetry Processing System [RT-STPS v7.0] ingests unsynchronized downlink data telemetry to various formats for further processing.
+* vm-orbital-ipopp - International Planetary Observation Processing Package [IPOPP v4.1 Patch2] processes science data and derivative products [from AQUA and other missions] using Science Processing Algorithms [SPA]
 
 NASA's Earth Observing System Data and Information System (EOSDIS) data products are processed at various levels ranging from Level 0 to Level 4. Level 0 products are raw data at full instrument resolution. At higher levels, the data are converted into more useful parameters and formats.
 
@@ -87,6 +89,22 @@ The Backend Block tells Terraform where to store the state. This is where the .t
 ![image](images/backend_block.png)
 <br>
 <br>
+
+* This deployment also assumes that you have downloaded the required software from the NASA DRL and stored in a separate Storage Account with a Container for RT-STPS and IPOPP as below:<br>
+
+  `https://[storageaccountname].blob.core.windows.net/rt-stps`<br>
+  `/RT-STPS_7.0.tar.gz`<br>
+  `/RT-STPS_7.0_testdata.tar.gz`<br>
+  <br>
+
+ `https://[storageaccountname].blob.core.windows.net/ipopp`<br>
+  `/DRL-IPOPP_4.1.tar.gz`<br>
+  `/DRL-IPOPP_4.1_PATCH_1.tar.gz`<br>
+  `/DRL-IPOPP_4.1_PATCH_2.tar.gz`<br>
+  <br>
+
+A Managed Identity is created and assigned the RBAC Role of Storage Blob Data Contributor to the Storage Account that you create to store the NASA Software. This Managed Identity is attached to both the RT-STPS and IPOPP Virtual Machines that allows them to pull the software during the execution of Custom Script Extensionn. All you need do is update the GitHub Secret [AZURE_AQUA_STORAGE_ACCOUNT] with the name of your Storage Account.
+
 Deployment takes approximately 45 minutes, the vasy majority of this being the installation of IPOPP.
 
 Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration Key:Value value is [here](./json/demodulationConfiguration.txt).<br>
@@ -106,8 +124,18 @@ After the Terraform deployment concludes successfully, the following has been de
 * Three VMs, vm-orbital-data-collection, vm-orbital-rt-stps and vm-orbital-ipopp;
 * Data disk [256GB] attached and mounted to each VM at /datadrive;
 * A Storage Account **saorbital** with Containers raw-data, rt-stps, ipopp and shared;
-* Container [saorbital/shared] NFS Mounted to each VM at /nfsdata;
+* Container [saorbital99/shared] NFS Mounted to each VM at /nfsdata;
 * An NSG attached to the endpoint-subnet with Inbound Traffic Allowed for 22, 3389 and 50001;
+
+# Example Output
+
+An example of the output that can be produced can be seen in the image below, a composite of a number of GEOTIFF's, displaying the Aqua Moderate Resolution Imaging Spectroradiometer (MODIS) NASA Level-2 (L2) Cloud Mask. The nominal spatial resolution of the Aqua MODIS L2 Cloud Mask is 1 km.
+<br>
+<br>
+![image](images/geotiff_output.png)
+<br>
+<br>
+
 # Backlog
 
 A number of things need to be improved.......
