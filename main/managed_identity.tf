@@ -31,8 +31,3 @@ resource "azurerm_role_assignment" "ra_mi_sa" {
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = azurerm_user_assigned_identity.uamiorbital.principal_id
 }
-
-#output "user_assigned_identity" {
-#  value       = azurerm_user_assigned_identity.uamiorbital.client_id
-#  description = "The id of the Managed Identity to access app installs in blob store"
-#}
