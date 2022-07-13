@@ -10,7 +10,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
-      TF_VAR_storageaccount: ${{ secrets.AZURE_AQUA_STORAGE_ACCOUNT }}
+      TF_VAR_aqua_tools_sa: ${{ secrets.AZURE_AQUA_STORAGE_ACCOUNT }}
     runs-on: ubuntu-latest
     environment: production
 
