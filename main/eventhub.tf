@@ -2,7 +2,7 @@
 ## Create Event Hub
 #######################################################################
 resource "azurerm_eventhub_namespace" "eh-orbital-ns" {
-  name                = "orbital-eh-namespace"
+  name                = "orbital-aqua-eh-namespace"
   location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
