@@ -4,22 +4,19 @@
 #	RT-STPS Install
 #	=============================
 
-echo "From rtstps_install.sh the client.id of the MI is ${AQUA_MI_ID}"
-echo "From rtstps_install.sh the name of the NASA Tools Storage Account is ${AQUA_TOOLS_SA}"
-
-echo "Now on the RT-STPS Install"
-echo "First let's install azcopy"
+	echo "Now on the RT-STPS Install"
+	echo "First let's install azcopy"
 #   Install az copy
-cd ~
-curl "https://azcopyvnext.azureedge.net/release20220315/azcopy_linux_amd64_10.14.1.tar.gz" > azcopy_linux_amd64_10.14.1.tar.gz
-tar -xvf azcopy_linux_amd64_10.14.1.tar.gz
-cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
+	cd ~
+	curl "https://azcopyvnext.azureedge.net/release20220315/azcopy_linux_amd64_10.14.1.tar.gz" > azcopy_linux_amd64_10.14.1.tar.gz
+	tar -xvf azcopy_linux_amd64_10.14.1.tar.gz
+	cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
 
 #	Apply Udates
-echo "Now let's upgrade packages"
+	echo "Now let's upgrade packages"
 	sudo yum upgrade -y 
 
-echo "Now let's install XRDP"
+	echo "Now let's install XRDP"
 # 	Install XRDP Server
 	sudo yum install -y epel-release
 	sudo yum groupinstall -y "Server with GUI"
@@ -29,35 +26,23 @@ echo "Now let's install XRDP"
 	sudo systemctl start xrdp.service
 	sudo systemctl set-default graphical.target
 
-#	Check if RT-STPS is installed already
+#	Check if RT-STPS is installed already.
 if [ -d "/root/rt-stps" ]; then
 	export NOW=$(date '+%Y%m%d-%H:%M:%S')
 	echo "$NOW	RT-STPS already installed, skipping installation"
 else
 	export NOW=$(date '+%Y%m%d-%H:%M:%S')
-	echo "$NOW	RT-STPS Prerequisites"
+	echo "$NOW sorting the RT-STPS Prerequisites"
 	
-#	Install JDK
-#	sudo yum install -y java-11-openjdk-devel
 	
-#   Set JAVA Environment Variables
-#	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-#	export PATH=$PATH:$JAVA_HOME/bin
-
-echo "Now let's download RT-STPS v7.0 and Test Data"
 #   Download RT_STPS Software and Test Data
-	export CONTAINER='https://samrw.blob.core.windows.net/rt-stps/'
-#	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:00Z&se=2023-06-07T02:11:00Z&spr=https&sv=2021-06-08&sr=c&sig=9jcQ%2B7STJjGnoA8NGD1CVtBEDhLDCwm3XVFuE1mLsGk%3D'
+	echo "Now let's download RT-STPS v7.0 and  some test data"
+	export CONTAINER="https://${AQUA_TOOLS_SA}.blob.core.windows.net/rt-stps/"
 	export SOURCE_DIR=/datadrive
 	export RTSTPS_DIR=/datadrive/rt-stps/
 
 	azcopy login --identity --identity-client-id ${AQUA_MI_ID}
-	#"f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
-
-	# azcopy login --identity --identity-client-id 835d11a5-a5f1-48b9-b7fc-42b2336a810e
-	# azcopy cp "./logfile.txt" "https://samrw.blob.core.windows.net/rt-stps/"
-
-
+	
 	azcopy cp "${CONTAINER}RT-STPS_7.0.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}RT-STPS_7.0_testdata.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}test2.bin" "$SOURCE_DIR"
@@ -69,26 +54,15 @@ echo "Now let's download RT-STPS v7.0 and Test Data"
 #	azcopy cp "${CONTAINER}RT-STPS_6.0_testdata.tar.gz${SAS_TOKEN}" "$SOURCE_DIR"
 #	azcopy cp "${CONTAINER}test2.bin${SAS_TOKEN}" "$SOURCE_DIR"
 
-#	Could use this but need to tidy up Container
-#	azcopy $RTSTPS_SOURCE $RTSTPS_DIR --recursive --overwrite --log-level=error
-
-echo "Now let's install RT-STPS v7.0"
 # 	Install RT-STPS
+	echo "Now let's install RT-STPS v7.0"
 	cd $SOURCE_DIR
 	tar -xzvf RT-STPS_7.0.tar.gz
 	#	tar -xzvf RT-STPS_6.0.tar.gz
 	cd rt-stps
 	./install.sh
 
-# 	Install patches
-#	cd $SOURCE_DIR
-#	tar -xzvf RT-STPS_6.0_PATCH_1.tar.gz 
-#	tar -xzvf RT-STPS_6.0_PATCH_2.tar.gz 
-#	tar -xzvf RT-STPS_6.0_PATCH_3.tar.gz
-#	sudo chown -R adminuser /datadrive
-#	sudo chgrp -R adminuser /datadrive
-
-# 	Update leadsec file
+# 	Update leapsec file
 	cd /datadrive/rt-stps
 	./bin/internal/update_leapsec.sh
 

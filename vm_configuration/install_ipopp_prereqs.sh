@@ -39,7 +39,7 @@ else
 	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
 	export PATCH_FILE_NAME='DRL-IPOPP_4.1_PATCH_1.tar.gz'
 
-	azcopy login --identity --identity-client-id "f1314747-ea4f-4f0a-92ba-fd0b5dc953a0"
+	azcopy login --identity --identity-client-id ${AQUA_MI_ID}
 
 	azcopy cp "${CONTAINER}DRL-IPOPP_4.1.tar.gz" "$SOURCE_DIR"
 	azcopy cp "${CONTAINER}DRL-IPOPP_4.1_PATCH_1.tar.gz" "$SOURCE_DIR"
