@@ -51,7 +51,6 @@ resource "azurerm_linux_virtual_machine" "vm_orbital_rtstps" {
   }
   identity {
     type         = "UserAssigned"
-    #identity_ids = [azurerm_user_assigned_identity.uamiorbital.id]
     identity_ids = [azurerm_user_assigned_identity.uamiorbital.id]
   }
 }
