@@ -96,7 +96,6 @@ The Backend Block tells Terraform where to store the state. This is where the .t
   `/RT-STPS_7.0.tar.gz`<br>
   `/RT-STPS_7.0_testdata.tar.gz`<br>
   <br>
-
  `https://[storageaccountname].blob.core.windows.net/ipopp`<br>
   `/DRL-IPOPP_4.1.tar.gz`<br>
   `/DRL-IPOPP_4.1_PATCH_1.tar.gz`<br>
