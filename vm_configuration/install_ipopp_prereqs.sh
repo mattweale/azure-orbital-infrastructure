@@ -36,7 +36,7 @@ else
 
 #   Download IPOPP Software and Patch.
 	echo "Now let's install IPOPP and Patches"
-	export CONTAINER="https://${AQUA_TOOLS_SA}.blob.core.windows.net/rt-stps/"
+	export CONTAINER="https://${AQUA_TOOLS_SA}.blob.core.windows.net/ipopp/"
 	export SOURCE_DIR=/datadrive
 	export INSTALL_DIR=/datadrive/IPOPP
 
