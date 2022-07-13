@@ -13,6 +13,7 @@ else
 	echo "$NOW	IPOPP Prerequisites"
 
 #   Install az copy
+	echo "Now let's install azcopy"
 	cd ~
 	curl "https://azcopyvnext.azureedge.net/release20220315/azcopy_linux_amd64_10.14.1.tar.gz" > azcopy_linux_amd64_10.14.1.tar.gz
 	tar -xvf azcopy_linux_amd64_10.14.1.tar.gz
@@ -20,9 +21,11 @@ else
 	sudo chmod 755 /usr/bin/azcopy
 
 #	Apply Udates
+	echo "Now let's upgrade packages"
 	sudo yum upgrade -y 
 	
 # 	Install XRDP Server
+	echo "Now let's install XRDP"
 	sudo yum install -y epel-release
 	sudo yum groupinstall -y "Server with GUI"
 	sudo yum groupinstall -y "Gnome Desktop"
@@ -31,13 +34,11 @@ else
 	sudo systemctl start xrdp.service
 	sudo systemctl set-default graphical.target
 
-#   Download IPOPP Software and Patch. Hard coded Containers and SAS Token
-	export CONTAINER='https://samrw.blob.core.windows.net/ipopp/'
-#	export SAS_TOKEN='?sp=rl&st=2022-06-06T18:11:57Z&se=2023-06-07T02:11:57Z&spr=https&sv=2021-06-08&sr=c&sig=xPb9nAWP8Om2ony57uySwlfsmWxNCO7boKEtWYC8qqs%3D'
+#   Download IPOPP Software and Patch.
+	echo "Now let's install IPOPP and Patches"
+	export CONTAINER="https://${AQUA_TOOLS_SA}.blob.core.windows.net/rt-stps/"
 	export SOURCE_DIR=/datadrive
 	export INSTALL_DIR=/datadrive/IPOPP
-	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
-	export PATCH_FILE_NAME='DRL-IPOPP_4.1_PATCH_1.tar.gz'
 
 	azcopy login --identity --identity-client-id ${AQUA_MI_ID}
 

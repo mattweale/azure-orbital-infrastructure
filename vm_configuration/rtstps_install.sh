@@ -16,8 +16,8 @@
 	echo "Now let's upgrade packages"
 	sudo yum upgrade -y 
 
-	echo "Now let's install XRDP"
 # 	Install XRDP Server
+	echo "Now let's install XRDP"
 	sudo yum install -y epel-release
 	sudo yum groupinstall -y "Server with GUI"
 	sudo yum groupinstall -y "Gnome Desktop"

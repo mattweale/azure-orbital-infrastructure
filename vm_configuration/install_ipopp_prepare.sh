@@ -7,8 +7,8 @@
 #   Set some environment variables
 	export SOURCE_DIR=/datadrive
 	export INSTALL_DIR=/datadrive/IPOPP
-	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
-	export PATCH_FILE_NAME='DRL-IPOPP_4.1_PATCH_1.tar.gz'
+#	export IPOPP_TAR_GZ_FILENAME='DRL-IPOPP_4.1.tar.gz'
+#	export PATCH_FILE_NAME='DRL-IPOPP_4.1_PATCH_1.tar.gz'
 
     cd $SOURCE_DIR
     tar -C $SOURCE_DIR -xzf DRL-IPOPP_4.1.tar.gz
