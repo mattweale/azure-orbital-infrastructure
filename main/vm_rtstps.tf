@@ -88,7 +88,7 @@ resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
   #timeouts {
   #  create = "60m"
   #}
-  settings                   = <<SETTINGS
+  settings = <<SETTINGS
     {
         "commandToExecute":"export AQUA_MI_ID=${azurerm_user_assigned_identity.uamiorbital.client_id} && export AQUA_TOOLS_SA=${data.data.azurerm_storage_account.sa_aqua_tool.name} && ./main_rtstps.sh > ./logfile.txt exit 0",
         "fileUris":["https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/mount_data_drive.sh",
@@ -97,5 +97,5 @@ resource "azurerm_virtual_machine_extension" "cse_vm_orbital_rtstps_config" {
                     "https://raw.githubusercontent.com/mattweale/azure-orbital-infrastructure/main/vm_configuration/rtstps_install.sh"]
     }
 SETTINGS
-  tags                       = var.tags
+  tags     = var.tags
 }

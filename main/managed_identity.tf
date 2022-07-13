@@ -20,7 +20,7 @@ data "azurerm_storage_account" "sa_aqua_tool" {
 resource "azurerm_user_assigned_identity" "uamiorbital" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
-  name = "uamiorbital"
+  name                = "uamiorbital"
 }
 
 #######################################################################
