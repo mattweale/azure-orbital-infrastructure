@@ -104,6 +104,8 @@ The Backend Block tells Terraform where to store the state. This is where the .t
 
 A Managed Identity is created and assigned the RBAC Role of Storage Blob Data Contributor to the Storage Account that you create to store the NASA Software. This Managed Identity is attached to both the RT-STPS and IPOPP Virtual Machines that allows them to pull the software during the execution of Custom Script Extensionn. All you need do is update the GitHub Secret [AZURE_AQUA_STORAGE_ACCOUNT] with the name of your Storage Account.
 
+Note that the Storage Account [saorbital99.blob.core.windows.net] and Event Hub Namespace [orbital.eh.namespace.servicebus.windows.net] URL have to be globally unique so you MAY need to change their name in the terraform file[storageaccount.tf and eventhub.tf].
+
 Deployment takes approximately 45 minutes, the vasy majority of this being the installation of IPOPP.
 
 Once deployed you need to update the Orbital Contact Profile with the IP Address of the Endpoint [VM] to which Orbital streams the payload, making note of the port. You also need to update the demodulationConfiguration, replacing X.X.X.X with the IP Address of your Endpoint. The demodulationConfiguration Key:Value value is [here](./json/demodulationConfiguration.txt).<br>
@@ -141,4 +143,5 @@ A number of things need to be improved.......
 
 * Use fstab for making mounts permanent
 * Query the GitHub actions runner's public IP addresses to dynamically build the whitelist for the Storage Firewall
+* Allow Storage Account name and Event Hub Namespace Name to be passed via a GitHub Secret
 * More elegant shell scripts all round :see_no_evil:
