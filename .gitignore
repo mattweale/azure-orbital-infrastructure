@@ -41,9 +41,8 @@ template.json
 *.pub
 **/docs/*
 **/files/*
-*.py
+receive.py
 auth.sh 
 Dockerfile
 *.bak
 .markdownlint.json
-test2.bin
