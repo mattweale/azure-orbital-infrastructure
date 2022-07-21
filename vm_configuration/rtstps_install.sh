@@ -26,13 +26,18 @@
 	sudo systemctl start xrdp.service
 	sudo systemctl set-default graphical.target
 
+#	Install Python3 and Bitstring Package
+	echo "Now let's install Python3"
+	sudo yum install pyhton3 -y
+	sudo yum install python3-bitstring -y
+
 #	Check if RT-STPS is installed already.
-if [ -d "/root/rt-stps" ]; then
-	export NOW=$(date '+%Y%m%d-%H:%M:%S')
-	echo "$NOW	RT-STPS already installed, skipping installation"
-else
-	export NOW=$(date '+%Y%m%d-%H:%M:%S')
-	echo "$NOW sorting the RT-STPS Prerequisites"
+#if [ -d "/root/rt-stps" ]; then
+#	export NOW=$(date '+%Y%m%d-%H:%M:%S')
+#	echo "$NOW	RT-STPS already installed, skipping installation"
+#else
+#	export NOW=$(date '+%Y%m%d-%H:%M:%S')
+#	echo "$NOW sorting the RT-STPS Prerequisites"
 	
 	
 #   Download RT_STPS Software and Test Data

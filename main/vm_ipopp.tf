@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "nic_orbital_data_ipopp" {
   }
 }
 #######################################################################
-## Create Linux VM ffor RTSTPS VM
+## Create Linux VM for IPOPP VM
 #######################################################################
 resource "azurerm_linux_virtual_machine" "vm_orbital_ipopp" {
   name                            = "vm-orbital-ipopp"

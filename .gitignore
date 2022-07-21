@@ -46,3 +46,4 @@ auth.sh
 Dockerfile
 *.bak
 .markdownlint.json
+test2.bin
