@@ -34,6 +34,11 @@ else
 	sudo systemctl start xrdp.service
 	sudo systemctl set-default graphical.target
 
+#	Install Python3 and Bitstring Package
+	echo "Now let's install Python3 and Requests package"
+	sudo yum install python3 -y
+	sudo yum pip3 install requests
+
 #   Download IPOPP Software and Patch.
 	echo "Now let's install IPOPP and Patches"
 	export CONTAINER="https://${AQUA_TOOLS_SA}.blob.core.windows.net/ipopp/"

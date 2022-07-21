@@ -28,7 +28,7 @@
 
 #	Install Python3 and Bitstring Package
 	echo "Now let's install Python3"
-	sudo yum install pyhton3 -y
+	sudo yum install python3 -y
 	sudo yum install python3-bitstring -y
 
 #	Check if RT-STPS is installed already.

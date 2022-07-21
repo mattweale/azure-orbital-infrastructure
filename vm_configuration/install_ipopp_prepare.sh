@@ -35,6 +35,10 @@
 	cp $INSTALL_DIR/drl/SPA/modisl1db/algorithm/DRLshellscripts/sample.netrc $HOME/.netrc
 # 	Next edit the $HOME/.netrc file to replace “yourlogin” and “yourpassword” with your EarthData portal credentials.
 
+# 	Move aqua_datachecker.py to /nfsdata
+	sudo mv /var/lib/waagent/custom_data/downloads/0/aqua_datachecker.py /nfsdata
+	sudo chmod 777 /nfsdata/aqua_datachecker.py 
+
 # 	Verify
 	$INSTALL_DIR/drl/tools/services.sh status > status.log
 	$INSTALL_DIR/drl/tools/spa_services.sh status >> status.log
